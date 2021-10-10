@@ -1,0 +1,62 @@
+class InputUtil {
+	static int Ir,Ic;
+
+	function void init() {
+		let Ir = 1;
+		let Ic = 1;
+		return;
+	}
+
+	function void eraseMessage() {
+		var String s;
+		do Output.moveCursor(Ir,Ic);
+		let s = "                                                 ";
+		do Output.printString(s);
+		do s.dispose();
+		return;
+	}
+
+	function void showMessage(String s) {
+		do InputUtil.eraseMessage();
+		do Output.moveCursor(Ir,Ic);
+		do Output.printString(s);
+		do s.dispose();
+		return;
+	}
+	
+	// reads only valid inputs!
+	// returns 0 for quit and 1 to 9 for moves!
+	function int readInput(String s) {
+		var char c;
+		var int choice;
+		do InputUtil.eraseMessage();		
+		while(true) {
+			do Output.moveCursor(Ir,Ic);
+			do Output.printString(s);
+			let c = Keyboard.readChar();
+			// 48 to 57
+			if((c>47) & (c<58)) {
+				do s.dispose();
+				return c-48;
+			}
+		}
+		return 0;// Never reach here!
+	}
+	
+	function int waitForZeroOrOne(String s) {
+		var char c;
+		var int choice;
+		do InputUtil.eraseMessage();		
+		while(true) {
+			do Output.moveCursor(Ir,Ic);
+			do Output.printString(s);
+			let c = Keyboard.readChar();
+			// 48 to 57
+			if((c>47) & (c<50)) {
+				do s.dispose();
+				return c-48;
+			}
+		}
+		return 0;// Never reach here!
+	}
+}

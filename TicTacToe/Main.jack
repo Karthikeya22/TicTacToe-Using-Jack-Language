@@ -1,0 +1,12 @@
+class Main {
+
+	function void main() {
+
+		do Screen.clearScreen();		
+		do TicTacToeGame.init();
+		do TicTacToeGame.startGame();
+		
+		return;
+	}
+
+}
